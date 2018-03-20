@@ -26,6 +26,7 @@
         var playerAnimation;
         var piew;
         var bots;
+        var lvl1Music;
         
 
 
@@ -39,6 +40,8 @@
             game.load.spritesheet('player', 'assets/player1.png', 319.5,162);
             game.load.audio('shoot', 'assets/sounds/piew.wav');
             game.load.audio('bots', 'assets/sounds/bots.wav');
+            game.load.audio('lvl1Music', 'assets/sounds/level1.wav');
+            
 
         }
 
@@ -78,6 +81,9 @@
             
             piew = game.add.audio('shoot');
             bots = game.add.audio('bots');
+            lvl1Music = game.add.audio('lvl1Music')
+            lvl1Music.play();
+            
             
             
             var stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
