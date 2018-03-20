@@ -24,7 +24,8 @@
         var fireButton
         var nextFire = 0;
         var playerAnimation;
-        var music;
+        var piew;
+        var bots;
         
 
 
@@ -37,6 +38,7 @@
             game.load.image('bullets', 'assets/bullet.jpg')
             game.load.spritesheet('player', 'assets/player1.png', 319.5,162);
             game.load.audio('shoot', 'assets/sounds/piew.wav');
+            game.load.audio('bots', 'assets/sounds/bots.wav');
 
         }
 
@@ -74,7 +76,8 @@
             
             fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
             
-            music = game.add.audio('shoot');
+            piew = game.add.audio('shoot');
+            bots = game.add.audio('bots');
             
             
             var stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
@@ -123,14 +126,15 @@ function fireBullet(){
             bullet.reset(player.x,player.y + 39);
             bullet.body.velocity.x = 888;
             bulletTime = game.time.now + 200;
-            music.play();
+            piew.play();
         }
     }
 }
         
 function collisionHandler(player,pipe){
-    pipe.kill()
-    location.reload();
+    
+    bots.play();
+    game.state.restart();
 }
         
 
