@@ -23,6 +23,7 @@
         var fireButton
         var nextFire = 0;
         var playerAnimation;
+        var music;
         
 
 
@@ -34,6 +35,7 @@
             game.load.image('pipe', 'assets/pipe.png');
             game.load.image('bullets', 'assets/bullet.jpg')
             game.load.spritesheet('player', 'assets/player1.png', 319.5,162);
+            game.load.audio('shoot', 'assets/sounds/piew.wav');
 
         }
 
@@ -70,6 +72,8 @@
             bullets.setAll('checkWorldBounds', true);
             
             fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+            
+            music = game.add.audio('shoot');
             
             
             var stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
@@ -116,8 +120,9 @@ function fireBullet(){
         
         if(bullet){
             bullet.reset(player.x,player.y + 39);
-            bullet.body.velocity.x = 300;
+            bullet.body.velocity.x = 888;
             bulletTime = game.time.now + 200;
+            music.play();
         }
     }
 }
